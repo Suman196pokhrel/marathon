@@ -14,3 +14,14 @@ The trade: you allocate a table bigger than the number of items (typically ~1/3 
 table:  [ ][apple][ ][ ][ ][ ][ ][ ]
 ```
 
+### Hash is practice
+```python
+hash("apple")     # some large int
+hash(42)          # 42, small ints hash to themselves
+hash((1, 2))      # computed from the elements
+hash([1, 2])      # TypeError: unhashable type: 'list'
+```
+Same value in, same number out, every time within one run.
+
+The hash is not a label attached to a key you have to find. The hash is the location. You compute it from the key you are holding, in your hand, right now. You do not need to find "apple" in the dict, because you already have "apple" in your hand.
+
