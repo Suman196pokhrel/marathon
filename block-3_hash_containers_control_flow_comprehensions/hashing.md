@@ -1,0 +1,16 @@
+# Hashes
+A hash function turns a key into a number. That number tells you which slot to look in. So you jump straight there instead of searching.
+That is the whole trick, and it is the reason dict and set lookup is O(1) while list lookup is O(n).
+
+Finding "apple" later: hash it again, get slot 1, look there. One step. No scanning.
+
+Contrast a list: to find "apple" you check element 0, then 1, then 2, until you find it. n steps.
+
+The trade: you allocate a table bigger than the number of items (typically ~1/3 empty or more) and you pay a hash computation on every operation. Memory and a constant-time computation, in exchange for skipping the search. That is why a dict uses more memory than a list of the same items.
+
+```python
+"apple" --hash--> 8371625193 --% 8--> slot 1
+                                       ↓
+table:  [ ][apple][ ][ ][ ][ ][ ][ ]
+```
+
