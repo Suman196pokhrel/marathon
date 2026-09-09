@@ -28,3 +28,20 @@ d['a'].append(1)
 print(d)        # {'a': [1], 'b': [1]}   same list
 ```
 
+### Access
+```python
+d['k']                  # KeyError if missing
+d.get('k')              # None if missing
+d.get('k', 0)           # 0 if missing
+d.setdefault('k', [])   # returns existing, or inserts default and returns it
+d.pop('k')              # remove and return, KeyError if missing
+d.pop('k', None)        # with default, safe
+d.popitem()             # remove and return the LAST pair (3.7+)
+```
+setdefault does two things at once: returns the current value if present, otherwise inserts your default and returns that. 
+It is the one-liner for building lists inside a dict.
+
+```python
+d.setdefault(key, []).append(item)
+```
+
