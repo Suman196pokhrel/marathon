@@ -66,3 +66,20 @@ d1.keys() - d2.keys()     # keys only in d1
 in checks keys, not values.
 
 
+### Mutation during iteration
+```python
+for k in d:
+    if cond: del d[k]     # RuntimeError: dictionary changed size during iteration
+```
+Iterating a view means iterating the live table. Resizing or reslotting mid-walk would make the iterator's position meaningless, so Python refuses.
+
+
+#### Fixes
+```python
+for k in list(d):              # snapshot of keys, safe
+    if cond: del d[k]
+
+d = {k: v for k, v in d.items() if keep(v)}     # build new, usually cleaner
+```
+
+
