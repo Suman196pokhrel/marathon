@@ -26,3 +26,11 @@ Works because the right side is fully evaluated first into a tuple, then unpacke
 
 
 
+Starred unpacking absorbs the rest into a list (always a list, never a tuple):
+```python
+first, *rest = [1, 2, 3, 4]     # 1, [2, 3, 4]
+*init, last = [1, 2, 3, 4]      # [1, 2, 3], 4
+a, *mid, z = [1, 2, 3, 4]       # 1, [2, 3], 4
+```
+
+
