@@ -37,3 +37,15 @@ slot:  0      1               2   3   4   5   6   7
       [ ]  [("apple", 5)]    [ ] [ ] [ ] [ ] [ ] [ ]
 ```
 
+### Lookup
+```python
+d["apple"]
+hash("apple") → 8371625193 (same input, same output, always)
+% 8 → slot 1
+Jump directly to slot 1. Array indexing, O(1), like arr[1]
+Read it
+```
+
+
+Zero keys were examined. Slots 0, 2, 3, 4, 5, 6, 7 were never touched. There was no scan.
+
