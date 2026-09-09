@@ -75,3 +75,22 @@ strip() with no argument removes whitespace, which is the 95% case and always sa
 
 --
 
+### Case and tests
+#### Cases
+```python
+s.lower() / s.upper() / s.title() / s.capitalize()
+```
+
+#### Tests
+Tests return bools andoperate on thw whole string
+```python
+"abc".isalpha()      # True
+"ab c".isalpha()     # False, space is not alpha
+"".isalpha()         # False, empty is always False
+"123".isdigit()
+"a1".isalnum()
+" \t".isspace()
+```
+
+
+
