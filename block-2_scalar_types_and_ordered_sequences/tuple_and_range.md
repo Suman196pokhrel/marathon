@@ -14,3 +14,15 @@ a, b = (1, 2, 3)     # ValueError: too many values to unpack
 ```
 
 
+### Swap
+```python
+a, b = b, a
+```
+
+Works because the right side is fully evaluated first into a tuple, then unpacked. So (b, a) is built from the old values before either name is rebound. No temp variable needed, no ordering hazard.
+
+
+-- 
+
+
+
