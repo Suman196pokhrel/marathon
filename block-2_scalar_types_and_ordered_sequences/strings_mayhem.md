@@ -105,3 +105,20 @@ Tests return bools andoperate on thw whole string
 ```
 
 
+### f-string and Format specs
+```python
+name, x = "Sam", 3.14159
+f"{name} has {x:.2f}"      # "Sam has 3.14"
+```
+Format spec: {value:[fill][align][width][,][.precision][type]}
+```python
+f"{x:.2f}"        # 3.14        fixed decimals
+f"{x:>10}"        # right align in width 10   (< left, ^ center)
+f"{1234567:,}"    # 1,234,567   thousands separator
+f"{255:b}"        # 11111111    binary   (o octal, x hex)
+f"{0.256:.1%}"    # 25.6%
+f"{x=}"           # x=3.14159   debugging, prints name and value
+```
+f"{x=}" is the fastest debug print you have. Use it instead of print("x is", x).
+
+
