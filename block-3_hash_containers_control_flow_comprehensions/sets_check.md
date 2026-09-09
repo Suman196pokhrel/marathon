@@ -23,3 +23,21 @@ s.clear()
 ```
 remove vs discard is the pair to remember. Use discard when absence is fine.
 
+### Set algebra
+```python
+a | b     a.union(b)                  # in either
+a & b     a.intersection(b)           # in both
+a - b     a.difference(b)             # in a only
+a ^ b     a.symmetric_difference(b)   # in exactly one
+
+a <= b    a.issubset(b)
+a < b     # proper subset
+a.isdisjoint(b)                       # no common elements
+```
+
+Operators require both sides to be sets. Method forms accept any iterable.
+```python
+{1,2} | [3]              # TypeError
+{1,2}.union([3])         # {1, 2, 3}
+```
+
