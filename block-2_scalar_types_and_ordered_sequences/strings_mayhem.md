@@ -94,3 +94,14 @@ Tests return bools andoperate on thw whole string
 
 
 
+### Transforming and padding
+```python
+"a-b-c".replace("-", "+")        # all occurrences
+"a-b-c".replace("-", "+", 1)     # first only
+"7".zfill(3)                     # "007"
+"7".rjust(3, "0")                # "007"
+"ab".ljust(5, ".")               # "ab..."
+"ab".center(6, "-")              # "--ab--"
+```
+
+
