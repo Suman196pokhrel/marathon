@@ -76,3 +76,15 @@ Compare keys with == (fast path: identity check first)
 Mismatch → probe the next slot
 
 
+### Is dict lookup always O(1)?
+
+No. It is O(1) average, O(n) worst case.
+
+The worst case is total collision: every key lands on the same slot, probing degenerates into a linear scan of n entries.
+```python
+class Bad:
+    def __hash__(self): return 1      # every instance collides
+    def __eq__(self, o): return self is o
+```
+
+
