@@ -27,3 +27,12 @@ join walks the list once to compute the total length, allocates one buffer, then
 Mental model: += is repeatedly rebuilding the whole wall to add a brick. join measures first, builds once.
 
 
+--
+### Why join is on the separator
+```python
+",".join(["a", "b"])     # "a,b"
+```
+Looks backwards, but join accepts any iterable of strings: list, tuple, set, generator, dict keys. If it were list.join(sep), every iterable type would need its own copy. 
+Putting it on str gives one implementation for all of the
+
+
