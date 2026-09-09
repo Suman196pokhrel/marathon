@@ -36,3 +36,12 @@ Looks backwards, but join accepts any iterable of strings: list, tuple, set, gen
 Putting it on str gives one implementation for all of the
 
 
+### Searching in strings
+```python
+"hello".find("z")      # -1
+"hello".index("z")     # ValueError
+"z" in "hello"         # False
+```
+Three ways, three failure styles. Use in for a yes/no question, find when you want a position and can handle absence, index when absence is a genuine error.
+
+
