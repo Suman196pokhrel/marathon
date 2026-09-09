@@ -45,3 +45,24 @@ It is the one-liner for building lists inside a dict.
 d.setdefault(key, []).append(item)
 ```
 
+### Views
+keys(), values(), items() return views: lazy windows onto the dict, not copies.
+```python
+d = {'a': 1}
+k = d.keys()
+d['b'] = 2
+print(k)        # dict_keys(['a', 'b'])   updated itself
+```
+
+No memory cost regardless of dict size. keys() and items() also support set operations, since keys are unique and hashable:
+```python
+d1.keys() & d2.keys()     # common keys
+d1.keys() - d2.keys()     # keys only in d1
+```
+
+
+--
+
+in checks keys, not values.
+
+
