@@ -83,3 +83,12 @@ d = {k: v for k, v in d.items() if keep(v)}     # build new, usually cleaner
 ```
 
 
+### Counter
+A dict subclass for counting.
+```python
+from collections import Counter
+c = Counter("banana")           # Counter({'a': 3, 'n': 2, 'b': 1})
+c.most_common(2)                # [('a', 3), ('n', 2)]
+c['z']                          # 0, missing keys return 0 WITHOUT inserting    
+```
+Note that difference from defaultdict: Counter does not insert on read.
