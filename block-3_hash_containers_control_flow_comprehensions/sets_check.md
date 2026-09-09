@@ -49,3 +49,19 @@ fs = frozenset([1, 2])
 {frozenset([1,2]), frozenset([2,1])}    # one element, order-insensitive
 ```
 
+### When a set is right, and when it is wrong
+
+Right:
+
+- Deduplication: list(set(items))
+- Membership testing in a loop
+- Seen-tracking in BFS/DFS
+- "Have I already processed this?"
+
+Wrong:
+
+- You need order (a set has none; list(set(x)) scrambles it)
+- You need duplicates (use Counter)
+- Elements are unhashable (lists, dicts)
+
+
