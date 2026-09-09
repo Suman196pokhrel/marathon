@@ -34,3 +34,16 @@ a, *mid, z = [1, 2, 3, 4]       # 1, [2, 3], 4
 ```
 
 
+### Namedtuple
+A tuple with named fields. Fixes the readability problem of p[2].
+```python
+from collections import namedtuple
+Point = namedtuple("Point", ["x", "y"])
+
+p = Point(1, 2)
+p.x          # 1
+p[0]         # 1, still a tuple
+x, y = p     # still unpacks
+```
+
+
