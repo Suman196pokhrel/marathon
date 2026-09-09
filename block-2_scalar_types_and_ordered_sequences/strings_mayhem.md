@@ -45,3 +45,10 @@ Putting it on str gives one implementation for all of the
 Three ways, three failure styles. Use in for a yes/no question, find when you want a position and can handle absence, index when absence is a genuine error.
 
 
+### Splitting strings
+```python
+"a b  c".split()         # ['a', 'b', 'c']   no arg: splits on ANY whitespace run
+"a b  c".split(" ")      # ['a', 'b', '', 'c']  with arg: exact, keeps empties
+"a,b,c".split(",", 1)    # ['a', 'b,c']  : hrere , is the separator and 1 is the max splits we want . so for 1 , we split the string once , creating 2 partitions
+```
+
