@@ -52,3 +52,11 @@ Three ways, three failure styles. Use in for a yes/no question, find when you wa
 "a,b,c".split(",", 1)    # ['a', 'b,c']  : hrere , is the separator and 1 is the max splits we want . so for 1 , we split the string once , creating 2 partitions
 ```
 
+### Partitions
+```python
+"a=b=c".partition("=")   # ('a', '=', 'b=c')  always 3 parts, splits once
+"line1\nline2".splitlines()
+```
+partition is useful when you want "before and after the first separator" without index arithmetic.
+
+
