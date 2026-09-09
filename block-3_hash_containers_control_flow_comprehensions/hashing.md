@@ -88,3 +88,7 @@ class Bad:
 ```
 
 
+### Why it is O(1) in practice:
+
+Built-in hash functions distribute well
+Python keeps the table sparse (it resizes when about two thirds full), so probes are short
