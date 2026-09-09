@@ -49,3 +49,13 @@ del lst[1]          # by INDEX, returns nothing, also works on slices
 ```
 
 
+### Key and reverse
+Key is a function applied to each element; sorting happens on the results
+```python
+words = ["banana", "kiwi", "apple"]
+sorted(words, key=len)              # ['kiwi', 'apple', 'banana']
+sorted(words, key=str.lower)
+sorted(nums, reverse=True)
+```
+key is called once per element (n calls), then sorting compares the computed values. So an expensive key function is fine.
+
