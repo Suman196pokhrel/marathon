@@ -65,3 +65,12 @@ Wrong:
 - Elements are unhashable (lists, dicts)
 
 
+### The interview points
+Complexity of in:
+
+| Type | Time Complexity | Notes / Details |
+| --- | --- | --- |
+| `list`, `tuple` | $O(n)$ | Linear search through elements |
+| `set`, `dict` (keys) | $O(1)$ avg | Average $O(1)$ lookup via hashing ($O(n)$ worst-case) |
+| `str` (substring) | $O(n \cdot m)$ | $n$ is string length, $m$ is substring length |
+| `d.values()` | $O(n)$ | Must iterate over all values |
