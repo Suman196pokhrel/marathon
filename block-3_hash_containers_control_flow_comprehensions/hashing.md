@@ -25,3 +25,15 @@ Same value in, same number out, every time within one run.
 
 The hash is not a label attached to a key you have to find. The hash is the location. You compute it from the key you are holding, in your hand, right now. You do not need to find "apple" in the dict, because you already have "apple" in your hand.
 
+### Storage
+
+A dict is an array of slots. On insert:
+```python
+d["apple"] = 5
+hash("apple") → 8371625193
+8371625193 % 8 → slot 1
+Store the pair ("apple", 5) in slot 1
+slot:  0      1               2   3   4   5   6   7
+      [ ]  [("apple", 5)]    [ ] [ ] [ ] [ ] [ ] [ ]
+```
+
