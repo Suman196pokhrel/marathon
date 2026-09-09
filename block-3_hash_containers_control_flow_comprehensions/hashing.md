@@ -65,3 +65,14 @@ Two rules. Everything else in this section is a consequence.
 - Rule 2: an object's hash must never change during its lifetime.
 
 
+### Collisions
+Two different keys can hash to the same slot. Unavoidable: infinitely many possible keys, finitely many slots.
+CPython uses probing: if the slot is taken by a different key, try another slot by a defined rule, repeat until an empty one is found. Lookup does the same walk, comparing keys along the way, until it finds the key or hits an empty slot (which proves absence).
+
+This is why __eq__ still matters. The hash gets you to a slot. == confirms you found the right key. Both are used on every lookup:
+
+Hash → slot
+Compare keys with == (fast path: identity check first)
+Mismatch → probe the next slot
+
+
