@@ -41,3 +41,11 @@ Operators require both sides to be sets. Method forms accept any iterable.
 {1,2}.union([3])         # {1, 2, 3}
 ```
 
+### frozenset
+Immutable, therefore hashable, therefore usable as a dict key or an element of another set.
+```python
+fs = frozenset([1, 2])
+{fs: "ok"}                    # works
+{frozenset([1,2]), frozenset([2,1])}    # one element, order-insensitive
+```
+
