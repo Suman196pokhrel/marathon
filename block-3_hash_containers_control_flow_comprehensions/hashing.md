@@ -49,3 +49,12 @@ Read it
 
 Zero keys were examined. Slots 0, 2, 3, 4, 5, 6, 7 were never touched. There was no scan.
 
+### The analogy
+
+A library where the shelf position is computed from the title.
+
+List: walk the shelves from the start, reading every spine, until you find the book. n steps.
+Dict: a rule says "this title goes on shelf 47." Apply the rule, walk to shelf 47. One step, whether the library has 100 books or 10 million.
+
+
+
