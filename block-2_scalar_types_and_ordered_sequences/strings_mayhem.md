@@ -122,3 +122,34 @@ f"{x=}"           # x=3.14159   debugging, prints name and value
 f"{x=}" is the fastest debug print you have. Use it instead of print("x is", x).
 
 
+### ORD / CHR
+```python
+ord('a')     # 97, character to code point
+chr(97)      # 'a', code point to character
+```
+Characters are numbers. ord() gives you the number.
+```python
+ord('a')  # 97
+ord('b')  # 98
+ord('c')  # 99
+...
+ord('z')  # 122
+```
+Contiguous means no gaps: 97, 98, 99, ... 122. Consecutive, in alphabetical order. That is a property of the ASCII/Unicode table, and it is what makes the trick work.
+
+Where it can be used ?
+```python
+def is_anagram(a, b):
+    if len(a) != len(b):
+        return False
+    counts = [0] * 26
+    for c in a:
+        counts[ord(c) - ord('a')] += 1
+    for c in b:
+        counts[ord(c) - ord('a')] -= 1
+    return all(v == 0 for v in counts)
+```
+Count up for one word, count down for the other. If they are anagrams, everything cancels to zero. O(n) time, O(1) space.
+
+Note the second loop decrements rather than building a second array. One array, two passes.
+
