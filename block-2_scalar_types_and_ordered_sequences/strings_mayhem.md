@@ -60,3 +60,18 @@ Three ways, three failure styles. Use in for a yes/no question, find when you wa
 partition is useful when you want "before and after the first separator" without index arithmetic.
 
 
+### Strip is a character set
+```python
+"hello".strip("ho")     # "ell"
+```
+strip does not remove the substring "ho". It removes any character in the set {h, o} from both ends, repeatedly, until it hits a character not in the set.
+Walk it: h is in the set, remove. e is not, stop left side. From the right: o is in the set, remove. l is not, stop. Result "ell".
+```python
+"xxhello".lstrip("x")          # "hello"
+"file.txt".strip(".txt")       # "file"   -> 'e' survives by luck, misleading
+"test.txt".strip(".txt")       # "es"     -> ate into the name
+```
+strip() with no argument removes whitespace, which is the 95% case and always safe.
+
+--
+
