@@ -58,3 +58,10 @@ Dict: a rule says "this title goes on shelf 47." Apply the rule, walk to shelf 4
 
 
 
+### The contract
+
+Two rules. Everything else in this section is a consequence.
+- Rule 1: if a == b, then hash(a) == hash(b).
+- Rule 2: an object's hash must never change during its lifetime.
+
+
