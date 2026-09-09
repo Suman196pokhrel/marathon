@@ -59,3 +59,9 @@ sorted(nums, reverse=True)
 ```
 key is called once per element (n calls), then sorting compares the computed values. So an expensive key function is fine.
 
+
+### Multi key sorting via tuples
+Tuples compare lexicographically: first elements, and only if tied, second elements. That gives you multi-level sorting for free.
+```python
+people.sort(key=lambda p: (p.dept, p.name))     # dept, then name within depts
+```
