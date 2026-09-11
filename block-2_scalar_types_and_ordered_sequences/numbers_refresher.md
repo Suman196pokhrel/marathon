@@ -1,5 +1,5 @@
 ### int
-int is arbitary precision, no overflow. Consequence : 32-bit overflow problems need explicit bounds check, python will not wrap.
+int is arbitrary precision, no overflow. Consequence : 32-bit overflow problems need explicit bounds check, python will not wrap.
 
 ### float
 float is binary, so 0.1 + 0.2 != 0.3. Some decimals have no exact binary form like 1/3 in decimal. Compare with math.isclose
@@ -25,7 +25,7 @@ When you add the stored floating-point representations of `0.1` and `0.2`, the r
 
 $$\text{Stored } 0.1 + \text{Stored } 0.2 = 0.3000000000000000444089209850062616169452667236328125$$
 
-Comparing `0.30000000000000004` to `0.29999999999999999` returns `False`.s
+Comparing `0.30000000000000004` to `0.29999999999999999` returns `False`.
 ```
 
 ### bool
@@ -61,5 +61,5 @@ A key mathematical property of Python's modulo operator is that **$a \% b$ alway
 
 - Python floors, C truncates. Means -1 % n == n -1, so wraparound just works. 
 - round is banker's rounding: round(0.5) == 0
-- divmod, abs, pow(a, b, m), math.isqrt, math.gtd, float('inf')
+- divmod, abs, pow(a, b, m), math.isqrt, math.gcd, float('inf')
 - chained comparison a<b<c
