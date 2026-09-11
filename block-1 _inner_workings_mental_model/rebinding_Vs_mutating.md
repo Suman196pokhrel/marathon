@@ -28,7 +28,7 @@ Operations that mutate:
 
 ---
 
-## Augmented assignment — the case that trips people up
+## Augmented assignment: the case that trips people up
 
 ```python
 a = [1, 2]
@@ -46,7 +46,7 @@ print(b)          # [1, 2]
 
 ## Function arguments are just binding
 
-Passing an argument binds the parameter name to the same object the caller holds — nothing more.
+Passing an argument binds the parameter name to the same object the caller holds, nothing more.
 
 ```python
 def f(lst):
@@ -60,4 +60,4 @@ def g(lst):
 
 ## `del`
 
-`del x` removes the name from the namespace. It does not delete the object. The object goes away only when nothing references it — that's reference counting, covered in Block 9.
+`del x` removes the name from the namespace. It does not delete the object. The object goes away only when nothing references it; that's reference counting, covered in Block 9.
