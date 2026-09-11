@@ -1,5 +1,5 @@
-# Sequence protocal
-A sequence is an ordered collection of items. Because items ahve , positions you can access the first item, second item and so on. The sequence protocol means they support a common set of operations.
+# Sequence protocol
+A sequence is an ordered collection of items. Because items have positions, you can access the first item, second item and so on. The sequence protocol means they support a common set of operations.
 
 Following are the python sequences
 ```python
