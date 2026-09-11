@@ -1,4 +1,4 @@
-### The six Bitwise operator
+### The six bitwise operators
 
 | Operator | Name        | What it does                                               |
 | -------- | ----------- | ---------------------------------------------------------- |
@@ -16,8 +16,8 @@
 a =12 #1100
 b = 10 #1010
 ```
-A result bit is 1 only when both corresping bits are 1
- a & b = 1000 = 8 (Decimal system)
+A result bit is 1 only when both corresponding bits are 1
+a & b = 1000 = 8 (Decimal system)
 
 
 ### Useful for checking whether particular bits are set:
@@ -44,4 +44,4 @@ Using 5, whose binary representation is 0101:
 ```
 The 1 means move by one position.
 
-For positive numbers, shifting left by one doubles the value; shifting right by one halves it, discarding any remainder.s
+For positive numbers, shifting left by one doubles the value; shifting right by one halves it, discarding any remainder.
