@@ -1,10 +1,10 @@
 # Class Creation: How `class` Actually Executes
 
-## Phase 1 — class creation
+## Phase 1: class creation
 
 `class C: ...` is a statement that gets **executed**. It is not just a declaration.
 
-> **Question:** what does that even mean — by that logic, doesn't a `def` statement also "execute"?
+> **Question:** what does that even mean? By that logic, doesn't a `def` statement also "execute"?
 >
 > Yes, but the two diverge in what running the statement actually does.
 
@@ -13,7 +13,7 @@ def f():
     x = 1
 ```
 
-The `def` statement runs immediately: it builds the function object and binds `f`. The *body* does not run — nobody called `f` yet.
+The `def` statement runs immediately: it builds the function object and binds `f`. The *body* does not run; nobody called `f` yet.
 
 ```python
 class C:
@@ -22,7 +22,7 @@ class C:
 
 The `class` statement also runs immediately: it builds the body into a function, then calls it via `__build_class__`. The body runs *now*, because `__build_class__` calls it immediately.
 
-The asymmetry isn't in the machinery — both compile a body into a function object first. It's that `class` includes the call, and `def` does not.
+The asymmetry isn't in the machinery: both compile a body into a function object first. It's that `class` includes the call, and `def` does not.
 
 ## Seeing it in bytecode
 
@@ -71,13 +71,13 @@ Disassembly of <code object m at 0x7f2ac11350b0, file "<s>", line 3>:
 
 Read it as a stack machine:
 
-- `PUSH_NULL` — calling-convention padding in 3.11. Every call expects a slot before the callable (for a bound `self`); there is none here, so `NULL`.
-- `LOAD_BUILD_CLASS` — pushes the builtin `__build_class__`. This is the function that actually performs class creation. You can call it yourself — it's in `builtins`.
-- `LOAD_CONST 0` — pushes the already-compiled code object for the class body. The compiler built it at compile time and stored it as a constant of the module.
-- `MAKE_FUNCTION 0` — wraps that code object into a real function object. The class body is genuinely a function.
-- `LOAD_CONST 1 ('C')` — pushes the name.
-- `CALL 2` — calls `__build_class__(body_function, 'C')`.
-- `STORE_NAME 0 (C)` — binds the result.
+- `PUSH_NULL`: calling-convention padding in 3.11. Every call expects a slot before the callable (for a bound `self`); there is none here, so `NULL`.
+- `LOAD_BUILD_CLASS`: pushes the builtin `__build_class__`. This is the function that actually performs class creation. You can call it yourself; it's in `builtins`.
+- `LOAD_CONST 0`: pushes the already-compiled code object for the class body. The compiler built it at compile time and stored it as a constant of the module.
+- `MAKE_FUNCTION 0`: wraps that code object into a real function object. The class body is genuinely a function.
+- `LOAD_CONST 1 ('C')`: pushes the name.
+- `CALL 2`: calls `__build_class__(body_function, 'C')`.
+- `STORE_NAME 0 (C)`: binds the result.
 
 So the source-level statement `class C:` compiles down to a function call. That's the whole of Phase 1 in one line.
 
