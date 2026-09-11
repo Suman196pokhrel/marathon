@@ -73,4 +73,4 @@ A16. == can be overridden by any class, and some real types return non-booleans 
 
 A17. If [] returned a shared object, then a = [] and b = [] would alias, and a.append(1) would change b. Every caching mechanism in Python applies only to immutable objects, because immutability is precisely what makes sharing unobservable. Sharing a mutable object would make aliasing universal and unavoidable.
 
-A18. path is one mutable list being appended to and popped from throughout the recursion. result.append(path) stores a reference to that live list, so every entry in result is the same object and reflects whatever state it ends in (usually empty). path[:] takes a shallow snapshot, which is a genuinely separate list. It is the aliasing bug in its most common DSA form.ss
+A18. path is one mutable list being appended to and popped from throughout the recursion. result.append(path) stores a reference to that live list, so every entry in result is the same object and reflects whatever state it ends in (usually empty). path[:] takes a shallow snapshot, which is a genuinely separate list. It is the aliasing bug in its most common DSA form.
