@@ -6,19 +6,19 @@
 - Falsy, no length, no iteration, no arithmetic
 
 ## What it means
-- Absence of a value — not zero, not empty, not `False`
+- Absence of a value, not zero, not empty, not `False`
 - Three uses: function returned nothing, argument not supplied, field genuinely empty
 
 ## Why `is None` over `== None`
 - `==` is overridable, `is` is not. A class can define `__eq__` to return `True` against anything
 - NumPy arrays return an array from `== None`, so `if arr == None` raises `ValueError`. `is None` works
-- `is` is a pointer comparison — faster, with a dedicated bytecode fast path
+- `is` is a pointer comparison, faster, with a dedicated bytecode fast path
 - PEP 8 requires it; every linter flags `== None`
 
 ## Why not `if not x:`
 - Falsy also catches `[]`, `""`, `0`, `0.0`, `{}`, `set()`, `False`
 - So a caller passing an empty list silently gets the default instead
-- `is None` distinguishes "not supplied" from "supplied as empty" — different states, a real bug class
+- `is None` distinguishes "not supplied" from "supplied as empty": different states, a real bug class
 - Same trap with `str.find` returning index `0`, and with `d.get()` where a missing key and a `None` value look identical
 
 ## Sentinel pattern
