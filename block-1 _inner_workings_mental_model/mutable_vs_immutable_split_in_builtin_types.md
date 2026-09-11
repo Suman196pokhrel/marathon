@@ -1,4 +1,4 @@
-# Mutable vs Immutable — The Built-in Type Split
+# Mutable vs Immutable: The Built-in Type Split
 
 ## Mutability
 
@@ -6,18 +6,18 @@ An object is **mutable** if its value can change after creation while its identi
 
 ## Immutability
 
-An object is **immutable** if no operation can change its value — anything that looks like a change instead produces a new object, with a new identity.
+An object is **immutable** if no operation can change its value: anything that looks like a change instead produces a new object, with a new identity.
 
 ```python
 a = [1, 2]
 before = id(a)
 a.append(3)
-id(a) == before      # True — changed in place, mutable
+id(a) == before      # True, changed in place, mutable
 
 s = "ab"
 before = id(s)
 s += "c"
-id(s) == before      # False — new object, immutable
+id(s) == before      # False, new object, immutable
 ```
 
 **Note:** mutability is a property of the *type*, not the variable. `x` is not mutable or immutable; the object `x` points at is.
@@ -67,7 +67,7 @@ Everything you need mutability for reduces to these:
    {frozenset([1, 2])}  # fine
    ```
 
-   Not the reverse, though — immutable does not guarantee hashable (see the note on sets below).
+   Not the reverse, though; immutable does not guarantee hashable (see the note on sets below).
 
 3. **Function arguments.** A function can mutate a mutable argument and the caller sees it. It can never affect the caller through an immutable one.
 
@@ -97,7 +97,7 @@ f(1); f(2)           # [1, 2], not [2]
 
 So `acc=[]` runs `[]` a single time, at definition. The resulting list is attached to the function and lives as long as the function does.
 
-`f.__defaults__` is the smoking gun. There is no "fresh default per call" mechanism — there's one object, sitting in the function object's heap block, from `def` until the function is garbage collected.
+`f.__defaults__` is the smoking gun. There is no "fresh default per call" mechanism; there's one object, sitting in the function object's heap block, from `def` until the function is garbage collected.
 
 ### Mutable class attributes
 
