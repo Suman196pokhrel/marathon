@@ -20,11 +20,11 @@ Floats are not cached at all: `1.0 is 1.0` at runtime is `False`.
 
 ## The second mechanism people confuse with caching
 
-When `a = 257; b = 257` gives `True`, that's usually *not* the small-int cache — it's the compiler.
+When `a = 257; b = 257` gives `True`, that's usually *not* the small-int cache; it's the compiler.
 
 Two separate compile-time behaviours:
 
-1. **Constant folding.** The compiler evaluates constant expressions at compile time. `"py" + "thon"` becomes the single constant `"python"` before your program runs — no runtime concatenation occurs.
+1. **Constant folding.** The compiler evaluates constant expressions at compile time. `"py" + "thon"` becomes the single constant `"python"` before your program runs; no runtime concatenation occurs.
 
 2. **Constant deduplication.** Within one code object, equal constants of the same type are stored once in `co_consts`.
 
@@ -33,12 +33,12 @@ def f():
     a = 1000
     b = 1000
     return a is b
-print(f())        # True — both LOAD_CONST point at the same entry
+print(f())        # True, both LOAD_CONST point at the same entry
 ```
 
 Both `1000` literals became one constant. This is why behaviour differs between a script and an interactive REPL: in a script the two lines compile into one code object; in the REPL each statement compiles separately, so each gets its own constant.
 
-That version-and-context dependence is the entire reason using `is` to compare values is unreliable. It isn't one rule you can memorise — it's three interacting mechanisms.
+That version-and-context dependence is the entire reason using `is` to compare values is unreliable. It isn't one rule you can memorise; it's three interacting mechanisms.
 
 ---
 
@@ -77,12 +77,12 @@ print(a is b)              # True
 
 ## Summary
 
-CPython preallocates integers from -5 to 256 and interns identifier-like string literals, so `is` can return `True` for values you didn't expect to share. Separately, the compiler folds constant expressions and deduplicates equal constants within a code object, which produces sharing even outside the cached ranges. All of it is implementation detail that varies by version and by whether the code compiles as one unit — `is` should only be used for singletons like `None`.
+CPython preallocates integers from -5 to 256 and interns identifier-like string literals, so `is` can return `True` for values you didn't expect to share. Separately, the compiler folds constant expressions and deduplicates equal constants within a code object, which produces sharing even outside the cached ranges. All of it is implementation detail that varies by version and by whether the code compiles as one unit; `is` should only be used for singletons like `None`.
 
 | Mechanism | What it does | Applies to | When it happens | Survives separate code objects? | Notes |
 |---|---|---|---|---|---|
 | **Small integer caching** | Reuses preallocated `int` objects | `int` in range **-5 to 256** | Runtime, any way the value is produced | **Yes** | Also called "integer interning" informally. `int("100") is 100` → `True` |
 | **String interning** | Global table so equal strings share one object | `str` literals that look like **identifiers** (letters, digits, `_`, not starting with a digit). Also all identifiers, attribute names, function/class names | Compile time (automatic) or runtime via `sys.intern()` | **Yes** | `"hello"` interned, `"hi there"` not |
 | **Singletons and small caches** | Exactly one object exists, forever | `None`, `True`, `False`, `()`, `""`, single-char latin-1 strings, `Ellipsis`, `NotImplemented` | Interpreter startup | **Yes** | `chr(97) is "a"` → `True` |
-| **Constant folding** | Compiler evaluates constant expressions ahead of time | Any constant expression: `2+3`, `"py"+"thon"`, `(1,2)` | Compile time | n/a — it removes the computation | `"py"+"thon"` becomes one constant. `s+"lo"` does not, `s` is a name |
+| **Constant folding** | Compiler evaluates constant expressions ahead of time | Any constant expression: `2+3`, `"py"+"thon"`, `(1,2)` | Compile time | n/a, it removes the computation | `"py"+"thon"` becomes one constant. `s+"lo"` does not, `s` is a name |
 | **Constant deduplication** | Equal constants of the same type stored once in `co_consts` | Any constant: int, float, str, tuple, bytes | Compile time | **No** | The unreliable one. `1000 is 1000` → `True` in a script, `False` across functions |
