@@ -206,7 +206,7 @@ class SingleLinkedList:
             slow = slow.next 
             fast = fast.next.next
 
-            if slow is slow:
+            if slow is fast:
                 return True
 
         return False
