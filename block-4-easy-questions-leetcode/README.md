@@ -39,3 +39,9 @@ Linked list problems are self-contained: the file carries its own list implement
 alongside the solution method, so it runs without any imports.
 
 The pattern list above is the plan; the directories fill in as problems get solved.
+
+## Solved so far
+
+- **Hashing / frequency counting**: [Two Sum](arrays/twosum.py), [Valid Anagram](arrays/valid-anagram.py) (two approaches, the second in O(1) space), [Contains Duplicate](arrays/contains-duplicate.py)
+- **Fast & slow pointers**: [Linked List Cycle](linkedlists/cycle_detection.py)
+- **Strings**: [Longest Common Prefix](arrays/longest_prefix.py)
