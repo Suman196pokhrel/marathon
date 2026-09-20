@@ -32,5 +32,10 @@ Every problem listed below is Easy difficulty.
 
 ## How this block is organized
 
-One file per pattern (e.g. `two_pointers.md`), holding the problem list, the core
-insight for the pattern, and solved examples with brief notes on why the approach works.
+Solutions live in a directory per data structure (`arrays/`, `linkedlists/`), with one
+`.py` file per problem. Problems with more than one approach keep each approach in the
+same file, labelled, so the tradeoff (e.g. time vs. space) is visible side by side.
+Linked list problems are self-contained: the file carries its own list implementation
+alongside the solution method, so it runs without any imports.
+
+The pattern list above is the plan; the directories fill in as problems get solved.
