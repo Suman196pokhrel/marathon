@@ -21,7 +21,7 @@ dict.fromkeys(['a','b'], 0)       # {'a': 0, 'b': 0}
 {**d1, **d2}                      # merge, d2 wins on conflicts
 d1 | d2                           # same thing, 3.9+
 ```
-fromkeys trap: the default value is one shared object.
+`fromkeys` trap: the default value is one shared object.
 ```python
 d = dict.fromkeys(['a','b'], [])
 d['a'].append(1)
@@ -38,7 +38,7 @@ d.pop('k')              # remove and return, KeyError if missing
 d.pop('k', None)        # with default, safe
 d.popitem()             # remove and return the LAST pair (3.7+)
 ```
-setdefault does two things at once: returns the current value if present, otherwise inserts your default and returns that. 
+`setdefault` does two things at once: returns the current value if present, otherwise inserts your default and returns that.
 It is the one-liner for building lists inside a dict.
 
 ```python
@@ -61,9 +61,7 @@ d1.keys() - d2.keys()     # keys only in d1
 ```
 
 
---
-
-in checks keys, not values.
+`in` checks keys, not values.
 
 
 ### Mutation during iteration
@@ -89,6 +87,6 @@ A dict subclass for counting.
 from collections import Counter
 c = Counter("banana")           # Counter({'a': 3, 'n': 2, 'b': 1})
 c.most_common(2)                # [('a', 3), ('n', 2)]
-c['z']                          # 0, missing keys return 0 WITHOUT inserting    
+c['z']                          # 0, missing keys return 0 WITHOUT inserting
 ```
-Note that difference from defaultdict: Counter does not insert on read.
+Note the difference from `defaultdict`: `Counter` does not insert on read.
