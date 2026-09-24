@@ -13,14 +13,15 @@
 
 #### AND
 ```python
-a =12 #1100
-b = 10 #1010
+a = 12   # 1100
+b = 10   # 1010
+a & b    # 1000 = 8
 ```
-A result bit is 1 only when both corresponding bits are 1
-a & b = 1000 = 8 (Decimal system)
+A result bit is 1 only when both corresponding bits are 1.
 
 
-### Useful for checking whether particular bits are set:
+### Checking bits
+AND is useful for checking whether particular bits are set:
 ```python
 x = 13  # 1101
 
@@ -31,7 +32,7 @@ The last bit represents 1. Every other position represents an even number, so:
 is_odd = (x & 1) == 1
 ```
 
-### To check position K, counting from zero on the right:
+To check position k, counting from zero on the right:
 ```python
 is_set = (x & (1 << k)) != 0
 ```
@@ -42,6 +43,6 @@ Using 5, whose binary representation is 0101:
 5 << 1   # 0101 → 1010 → 10
 5 >> 1   # 0101 → 0010 → 2
 ```
-The 1 means move by one position.
+The `1` is the shift distance: one position.
 
 For positive numbers, shifting left by one doubles the value; shifting right by one halves it, discarding any remainder.
