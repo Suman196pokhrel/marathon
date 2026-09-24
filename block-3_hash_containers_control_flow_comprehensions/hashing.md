@@ -14,7 +14,7 @@ The trade: you allocate a table bigger than the number of items (typically ~1/3 
 table:  [ ][apple][ ][ ][ ][ ][ ][ ]
 ```
 
-### Hash is practice
+### Hash in practice
 ```python
 hash("apple")     # some large int
 hash(42)          # 42, small ints hash to themselves
@@ -28,7 +28,7 @@ The hash is not a label attached to a key you have to find. The hash is the loca
 ### Storage
 
 A dict is an array of slots. On insert:
-```python
+```text
 d["apple"] = 5
 hash("apple") → 8371625193
 8371625193 % 8 → slot 1
@@ -38,7 +38,7 @@ slot:  0      1               2   3   4   5   6   7
 ```
 
 ### Lookup
-```python
+```text
 d["apple"]
 hash("apple") → 8371625193 (same input, same output, always)
 % 8 → slot 1
@@ -53,8 +53,8 @@ Zero keys were examined. Slots 0, 2, 3, 4, 5, 6, 7 were never touched. There was
 
 A library where the shelf position is computed from the title.
 
-List: walk the shelves from the start, reading every spine, until you find the book. n steps.
-Dict: a rule says "this title goes on shelf 47." Apply the rule, walk to shelf 47. One step, whether the library has 100 books or 10 million.
+- **List**: walk the shelves from the start, reading every spine, until you find the book. n steps.
+- **Dict**: a rule says "this title goes on shelf 47." Apply the rule, walk to shelf 47. One step, whether the library has 100 books or 10 million.
 
 
 
@@ -71,9 +71,9 @@ CPython uses probing: if the slot is taken by a different key, try another slot 
 
 This is why __eq__ still matters. The hash gets you to a slot. == confirms you found the right key. Both are used on every lookup:
 
-Hash → slot
-Compare keys with == (fast path: identity check first)
-Mismatch → probe the next slot
+1. Hash → slot
+2. Compare keys with `==` (fast path: identity check first)
+3. Mismatch → probe the next slot
 
 
 ### Is dict lookup always O(1)?
@@ -88,7 +88,7 @@ class Bad:
 ```
 
 
-### Why it is O(1) in practice:
+### Why it is O(1) in practice
 
-Built-in hash functions distribute well
-Python keeps the table sparse (it resizes when about two thirds full), so probes are short
+- Built-in hash functions distribute well
+- Python keeps the table sparse (it resizes when about two thirds full), so probes are short
