@@ -19,9 +19,8 @@ s.remove(x)           # KeyError if missing
 s.discard(x)          # silent if missing
 s.pop()               # removes an ARBITRARY element
 s.clear()
-
 ```
-remove vs discard is the pair to remember. Use discard when absence is fine.
+`remove` vs `discard` is the pair to remember. Use `discard` when absence is fine.
 
 ### Set algebra
 ```python
