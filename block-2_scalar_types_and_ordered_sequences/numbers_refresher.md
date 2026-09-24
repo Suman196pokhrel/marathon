@@ -1,8 +1,8 @@
 ### int
-int is arbitrary precision, no overflow. Consequence : 32-bit overflow problems need explicit bounds check, python will not wrap.
+int is arbitrary precision, no overflow. Consequence: 32-bit overflow problems need an explicit bounds check, Python will not wrap.
 
 ### float
-float is binary, so 0.1 + 0.2 != 0.3. Some decimals have no exact binary form like 1/3 in decimal. Compare with math.isclose
+float is binary, so 0.1 + 0.2 != 0.3. Some decimals have no exact binary form, just as 1/3 has no exact decimal form. Compare with `math.isclose`.
 
 ```text
 ## 1. Why `0.1 + 0.2 != 0.3`
@@ -29,16 +29,16 @@ Comparing `0.30000000000000004` to `0.29999999999999999` returns `False`.
 ```
 
 ### bool
-bool is a subset of int. True ==1 , sum([True, False, True]) == 2
+bool is a subclass of int. `True == 1`, `sum([True, False, True]) == 2`
 
-- / float
-- //floor
-- % module = spits out the remainder
-- -7 // 2 == -4 and -7 % 2 == 1.
+- `/` true division, always returns a float
+- `//` floor division
+- `%` modulo, returns the remainder
+- `-7 // 2 == -4` and `-7 % 2 == 1`
 
-####  Why `-7 % 2` is Positive in Python
+### Why `-7 % 2` is Positive in Python
 
-Programming languages handle floor division and modulo for negative numbers in two main ways: **truncated division** (rounds toward zero) and **floored division** (rounds toward negative infinity). 
+Programming languages handle floor division and modulo for negative numbers in two main ways: **truncated division** (rounds toward zero) and **floored division** (rounds toward negative infinity).
 
 Python strictly follows **floored division** to preserve the fundamental division identity for all integers:
 
@@ -52,14 +52,14 @@ Plugging this into the division identity:
 
 $$\begin{aligned} -7 &= (-7 // 2) \times 2 + (-7 \% 2) \\ -7 &= (-4) \times 2 + (-7 \% 2) \\ -7 &= -8 + (-7 \% 2) \\ -7 \% 2 &= 1 \end{aligned}$$
 
-Because Python floors the quotient down to $-4$, the remainder must be **$+1$** to restore $-7$. 
+Because Python floors the quotient down to $-4$, the remainder must be **$+1$** to restore $-7$.
 
 
 A key mathematical property of Python's modulo operator is that **$a \% b$ always shares the sign of the divisor $b$**.
 
 
 
-- Python floors, C truncates. Means -1 % n == n -1, so wraparound just works. 
-- round is banker's rounding: round(0.5) == 0
+- Python floors, C truncates. So `-1 % n == n - 1` and wraparound just works.
+- `round` is banker's rounding: `round(0.5) == 0`
 - divmod, abs, pow(a, b, m), math.isqrt, math.gcd, float('inf')
-- chained comparison a<b<c
+- chained comparison `a < b < c`
