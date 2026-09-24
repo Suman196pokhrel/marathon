@@ -9,15 +9,15 @@ print(s)         # "abc", unchanged
 Every string method returns a new string. If you forget to assign the result, nothing happens. This is the most common beginner string bug.
 
 
-# Concatenation in a loop
+### Concatenation in a loop
 ```python
 s = ""
 for c in chars:
-    s+=c            # n iterations
+    s += c          # n iterations
 ```
 
-s += c cannot mutate, so each step allocates a new string and copies everything accumulated so far. 
-Iteration 1 copies 1 char, iteration 2 copies 2, and so on: 1+2+3+...+n, which is O(n²). (HOW ?)
+s += c cannot mutate, so each step allocates a new string and copies everything accumulated so far.
+Iteration 1 copies 1 char, iteration 2 copies 2, and so on: 1+2+3+...+n = n(n+1)/2, which is O(n²).
 
 ```python
 s = "".join(chars)   # O(n)
@@ -27,13 +27,12 @@ join walks the list once to compute the total length, allocates one buffer, then
 Mental model: += is repeatedly rebuilding the whole wall to add a brick. join measures first, builds once.
 
 
---
 ### Why join is on the separator
 ```python
 ",".join(["a", "b"])     # "a,b"
 ```
-Looks backwards, but join accepts any iterable of strings: list, tuple, set, generator, dict keys. If it were list.join(sep), every iterable type would need its own copy. 
-Putting it on str gives one implementation for all of the
+Looks backwards, but join accepts any iterable of strings: list, tuple, set, generator, dict keys. If it were list.join(sep), every iterable type would need its own copy.
+Putting it on str gives one implementation for all of them.
 
 
 ### Searching in strings
@@ -49,7 +48,7 @@ Three ways, three failure styles. Use in for a yes/no question, find when you wa
 ```python
 "a b  c".split()         # ['a', 'b', 'c']   no arg: splits on ANY whitespace run
 "a b  c".split(" ")      # ['a', 'b', '', 'c']  with arg: exact, keeps empties
-"a,b,c".split(",", 1)    # ['a', 'b,c']  : hrere , is the separator and 1 is the max splits we want . so for 1 , we split the string once , creating 2 partitions
+"a,b,c".split(",", 1)    # ['a', 'b,c']  max 1 split, so 2 parts
 ```
 
 ### Partitions
@@ -73,8 +72,6 @@ Walk it: h is in the set, remove. e is not, stop left side. From the right: o is
 ```
 strip() with no argument removes whitespace, which is the 95% case and always safe.
 
---
-
 ### Case and tests
 #### Cases
 ```python
@@ -82,7 +79,7 @@ s.lower() / s.upper() / s.title() / s.capitalize()
 ```
 
 #### Tests
-Tests return bools andoperate on thw whole string
+Tests return bools and operate on the whole string.
 ```python
 "abc".isalpha()      # True
 "ab c".isalpha()     # False, space is not alpha
@@ -122,7 +119,7 @@ f"{x=}"           # x=3.14159   debugging, prints name and value
 f"{x=}" is the fastest debug print you have. Use it instead of print("x is", x).
 
 
-### ORD / CHR
+### ord / chr
 ```python
 ord('a')     # 97, character to code point
 chr(97)      # 'a', code point to character
@@ -137,7 +134,7 @@ ord('z')  # 122
 ```
 Contiguous means no gaps: 97, 98, 99, ... 122. Consecutive, in alphabetical order. That is a property of the ASCII/Unicode table, and it is what makes the trick work.
 
-Where it can be used ?
+Where it is used:
 ```python
 def is_anagram(a, b):
     if len(a) != len(b):
