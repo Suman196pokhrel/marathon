@@ -4,8 +4,8 @@ In C, an int is a fixed 32 or 64 bits of memory. The hardware adds two registers
 Python does not use a machine register. A Python int is a heap object with a variable-length array inside it:
 ```c
 struct {
-    PyObject_HEAD       // refcount, type pointer
-    ssize_t ob_size;    // number of digits, sign encoded here
+    PyObject_HEAD        // refcount, type pointer
+    ssize_t ob_size;     // number of digits, sign encoded here
     uint32_t ob_digit[]; // the digits themselves
 };
 ```
