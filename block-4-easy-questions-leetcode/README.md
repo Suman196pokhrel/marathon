@@ -1,16 +1,16 @@
 # Block 4: Easy LeetCode Practice
 
-Core Python theory (blocks 1-3) is done. From here, remaining theory gets picked up
-on demand, driven by whatever a question actually requires, instead of front-loading it.
+Core Python theory (blocks 1-3) is complete. From here on, new theory is learned
+on demand, as each problem calls for it, rather than front-loaded.
 
-The goal of this block: build pattern recognition on easy-tier interview questions.
-Solve enough of each pattern that the approach becomes automatic, not something to
-rederive from scratch every time.
+The goal of this block is pattern recognition on easy-tier interview questions:
+solve enough of each pattern that the approach becomes second nature instead of
+something to rederive from scratch every time.
 
 ## Patterns to cover
 
 Grouped by the technique they drill, not by topic. Many easy questions are the same
-core patterns wearing different clothes; recognizing the pattern is the actual skill.
+core patterns in disguise, and spotting the pattern is the real skill.
 Every problem listed below is Easy difficulty.
 
 - **Two pointers**: Two Sum II (sorted), Valid Palindrome, Merge Sorted Array, Remove Duplicates from Sorted Array, Move Zeroes, Reverse String
@@ -38,7 +38,7 @@ same file, labelled, so the tradeoff (e.g. time vs. space) is visible side by si
 Linked list problems are self-contained: the file carries its own list implementation
 alongside the solution method, so it runs without any imports.
 
-The pattern list above is the plan; the directories fill in as problems get solved.
+The pattern list above is the roadmap; directories fill in as problems are solved.
 
 ## Solved so far
 
