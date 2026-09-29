@@ -40,6 +40,8 @@ Linked list problems are self-contained: the file carries its own list implement
 alongside the solution method, so it runs without any imports.
 
 The pattern list above is the roadmap; directories fill in as problems are solved.
+For a refresher on the structures themselves (operations, complexities, tradeoffs),
+see the [data-structs README](../data-structs/README.md).
 
 ## Solved so far
 
