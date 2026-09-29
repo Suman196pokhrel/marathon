@@ -134,3 +134,14 @@ scanning. Python's `dict` and `set` are hash tables.
 - **Good at:** near instant lookup, insert, and delete by key.
 - **Bad at:** no ordering (no "next smallest key"), keys must be hashable, extra memory,
   and many collisions make it degrade toward O(n).
+
+## Cheat sheet
+
+| Structure | Access | Search | Insert | Delete |
+| --- | --- | --- | --- | --- |
+| Static array | O(1) | O(n) | O(n) | O(n) |
+| Dynamic array | O(1) | O(n) | O(1) amortized at end, O(n) elsewhere | O(1) at end, O(n) elsewhere |
+| Singly linked list | O(n) | O(n) | O(1) at head | O(1) at head |
+| Stack | O(1) top only | O(n) | O(1) push | O(1) pop |
+| Queue | O(1) front only | O(n) | O(1) enqueue | O(1) dequeue |
+| Hash table | n/a | O(1) average | O(1) average | O(1) average |
