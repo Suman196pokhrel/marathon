@@ -117,3 +117,20 @@ everything from stack 1 into it, which flips the order.
 - In real code, use `collections.deque`, which is O(1) at both ends.
 
 Every structure so far needs O(n) to find a value, which leads to the hash table.
+
+## Hash table (next up)
+
+Notes so far: [block-3 hashing notes](../block-3_hash_containers_control_flow_comprehensions/hashing.md)
+
+A hash function turns a key into an array index, so a value can be found without
+scanning. Python's `dict` and `set` are hash tables.
+
+| Operation | Average | Worst |
+| --- | --- | --- |
+| Insert | O(1) | O(n) |
+| Lookup | O(1) | O(n) |
+| Delete | O(1) | O(n) |
+
+- **Good at:** near instant lookup, insert, and delete by key.
+- **Bad at:** no ordering (no "next smallest key"), keys must be hashable, extra memory,
+  and many collisions make it degrade toward O(n).
