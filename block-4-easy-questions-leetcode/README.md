@@ -29,6 +29,7 @@ Every problem listed below is Easy difficulty.
 - **Greedy basics**: Assign Cookies, Best Time to Buy and Sell Stock
 - **Math basics**: Palindrome Number, Plus One, FizzBuzz, Pascal's Triangle, Roman to Integer
 - **Counting / majority element**: Majority Element (Boyer-Moore voting)
+- **Strings**: Longest Common Prefix, Reverse Words in a String III, Length of Last Word
 
 ## How this block is organized
 
