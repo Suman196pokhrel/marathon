@@ -66,3 +66,54 @@ anywhere in memory, so nothing ever needs to shift or be copied.
 
 Arrays and linked lists are general purpose. Often you only need to touch one end,
 which leads to the stack.
+
+## Stack
+
+Notebooks: [stacks-using-arrays.ipynb](stacks-using-arrays.ipynb), [stacks.ipynb](stacks.ipynb) (linked list based)
+
+Last in, first out (LIFO). You only ever touch the top, like a pile of plates.
+Used for undo/redo, matching brackets, and function calls.
+
+| Operation | Time |
+| --- | --- |
+| push | O(1) |
+| pop | O(1) |
+| peek | O(1) |
+| is empty | O(1) |
+
+- **Array based:** simple and cache friendly, but a fixed-size array can overflow.
+  A Python `list` avoids that by growing.
+- **Linked list based:** never overflows, pushing is just a new head node.
+- **Bad at:** you only get the newest item. Serving items in arrival order needs something else.
+
+That need for first come, first served leads to the queue.
+
+## Queue
+
+Notebooks: [queues-using-linkedlist.ipynb](queues-using-linkedlist.ipynb), [queues_using_2_Stacks.ipynb](queues_using_2_Stacks.ipynb)
+
+First in, first out (FIFO). Add at the rear, remove from the front, like a line at
+a counter. Used for task scheduling and BFS.
+
+Why not just use a `list`? `list.pop(0)` shifts every remaining item, so it is O(n).
+
+**Linked list with front and rear pointers**
+
+| Operation | Time |
+| --- | --- |
+| enqueue (at rear) | O(1) |
+| dequeue (from front) | O(1) |
+
+**Two stacks**: push into stack 1, and pop from stack 2. When stack 2 is empty, move
+everything from stack 1 into it, which flips the order.
+
+| Operation | Time |
+| --- | --- |
+| enqueue | O(1) |
+| dequeue | O(1) amortized, O(n) when a transfer happens |
+
+- **Good at:** fair, in-order processing at O(1) per operation.
+- **Bad at:** no fast lookup. Asking "is X in here?" is still O(n).
+- In real code, use `collections.deque`, which is O(1) at both ends.
+
+Every structure so far needs O(n) to find a value, which leads to the hash table.
