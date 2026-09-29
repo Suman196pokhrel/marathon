@@ -45,3 +45,24 @@ Python's `list` works this way, though CPython grows by a smaller factor than 2x
   every element, and spare capacity wastes memory.
 
 The shifting cost at the front leads to the linked list.
+
+## Singly linked list
+
+Notebook: [single-linedlist.ipynb](single-linedlist.ipynb)
+
+A chain of nodes. Each node holds a value and a pointer to the next node. Nodes live
+anywhere in memory, so nothing ever needs to shift or be copied.
+
+| Operation | Time |
+| --- | --- |
+| Insert / delete at the head | O(1) |
+| Access by index | O(n), you walk from the head |
+| Search by value | O(n) |
+| Append at the tail | O(n) without a tail pointer, O(1) with one |
+| Insert / delete after a known node | O(1) |
+
+- **Good at:** cheap inserts and deletes at the front, grows one node at a time with no resizing.
+- **Bad at:** no random access, an extra pointer per item, and poor cache locality.
+
+Arrays and linked lists are general purpose. Often you only need to touch one end,
+which leads to the stack.
